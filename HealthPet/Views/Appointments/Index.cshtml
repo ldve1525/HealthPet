@@ -1,0 +1,127 @@
+﻿@model IEnumerable<HealthPet.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shift)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @switch (item.Shift)
+                {
+                    case 1:
+                        <p>8:00 AM</p>
+                        break;
+                    case 2:
+                        <p>8:30 AM</p>
+                        break;
+                    case 3:
+                        <p>9:00 AM</p>
+                        break;
+                    case 4:
+                        <p>9:30 AM</p>
+                        break;
+                    case 5:
+                        <p>10:00 AM</p>
+                        break;
+                    case 6:
+                        <p>10:30 AM</p>
+                        break;
+                    case 7:
+                        <p>11:00 AM</p>
+                        break;
+                    case 8:
+                        <p>11:30 AM</p>
+                        break;
+                    case 9:
+                        <p>12:00 PM</p>
+                        break;
+                    case 10:
+                        <p>12:30 PM</p>
+                        break;
+                    case 11:
+                        <p>1:00 PM</p>
+                        break;
+                    case 12:
+                        <p>1:30 PM</p>
+                        break;
+                    case 13:
+                        <p>2:00 PM</p>
+                        break;
+                    case 14:
+                        <p>2:30 PM</p>
+                        break;
+                    case 15:
+                        <p>3:00 PM</p>
+                        break;
+                    case 16:
+                        <p>3:30 PM</p>
+                        break;
+                    case 17:
+                        <p>4:00 PM</p>
+                        break;
+                    case 18:
+                        <p>4:30 PM</p>
+                        break;
+                    case 19:
+                        <p>5:00 PM</p>
+                        break;
+                    case 20:
+                        <p>5:30 PM</p>
+                        break;
+                }
+            </td>
+            <td>
+                <p>@item.FirstName @item.LastName</p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

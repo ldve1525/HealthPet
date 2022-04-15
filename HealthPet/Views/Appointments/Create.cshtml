@@ -1,0 +1,148 @@
+﻿@model HealthPet.Models.Appointment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="group col-sm-8">
+        <div class="row">
+            <label class="col-sm-6 col-form-label">Solicitar</label>
+            <label asp-for="Categorie" class="col-sm-6 col-form-label"></label>
+        </div>
+        <div class="row">
+            <label class="col-sm-6 cita"><strong>NUEVA CITA</strong></label>
+            <div class="col-sm-6">
+                <select asp-for="Categorie" class="form-control">
+                    <option>Consulta veterinaria</option>
+                    <option>Vacunación en perros y gatos</option>
+                    <option>Cirugía veterinaria</option>
+                    <option>Castración</option>
+                    <option>Hospitalización</option>
+                    <option>Laboratorio</option>
+                    <option>Medicamentos</option>
+                    <option>Certificados de viaje</option>
+                </select>
+            </div>
+            <span asp-validation-for="Categorie" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <label asp-for="Date" class="col-sm-6 col-form-label"></label>
+            <label asp-for="Shift" class="col-sm-6 col-form-label"></label>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <input asp-for="Date" id="date" class="form-control" onchange="myFunction(this.value)" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddMonths(1).ToString("yyyy-MM-dd")" />
+            </div>
+            <span asp-validation-for="Date" class="text-danger"></span>
+            <div class="col-sm-6">
+                <select asp-for="Shift" id="shift" class="form-control" disabled>
+                    <option selected disabled>Seleccione la hora deseada</option>
+                    <option value="1">8:00 AM</option>
+                    <option value="2">8:30 AM</option>
+                    <option value="3">9:00 AM</option>
+                    <option value="4">9:30 AM</option>
+                    <option value="5">10:00 AM</option>
+                    <option value="6">10:30 AM</option>
+                    <option value="7">11:00 AM</option>
+                    <option value="8">11:30 AM</option>
+                    <option value="9">12:00 PM</option>
+                    <option value="10">12:30 PM</option>
+                    <option value="11">1:00 PM</option>
+                    <option value="12">1:30 PM</option>
+                    <option value="13">2:00 PM</option>
+                    <option value="14">2:30 PM</option>
+                    <option value="15">3:00 PM</option>
+                    <option value="16">3:30 PM</option>
+                    <option value="17">4:00 PM</option>
+                    <option value="18">4:30 PM</option>
+                    <option value="19">5:00 PM</option>
+                    <option value="20">5:30 PM</option>
+                </select>
+                <span asp-validation-for="Shift" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <br />
+    Datos del cliente
+    <div class="group col-sm-8">
+        <div class="row">
+            <label asp-for="FirstName" class="col-sm-6 col-form-label"></label>
+            <label asp-for="LastName" class="col-sm-6 col-form-label"></label>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <label asp-for="IdCard" class="col-sm-3 col-form-label"></label>
+            <label asp-for="Phone" class="col-sm-3 col-form-label"></label>
+            <label asp-for="Email" class="col-sm-6 col-form-label"></label>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3">
+                <input asp-for="IdCard" class="form-control" />
+                <span asp-validation-for="IdCard" class="text-danger"></span>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <br />
+    Datos de la mascota
+    <div class="group col-sm-8">
+        <div class="row">
+            <label asp-for="PetName" class="col-sm-3 col-form-label"></label>
+            <label asp-for="PetType" class="col-sm-3 col-form-label"></label>
+            <label asp-for="Race" class="col-sm-3 col-form-label"></label>
+            <label asp-for="PetAge" class="col-sm-3 col-form-label"></label>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-3">
+                <input asp-for="PetName" class="form-control" />
+                <span asp-validation-for="PetName" class="text-danger"></span>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="PetType" class="form-control" />
+                <span asp-validation-for="PetType" class="text-danger"></span>
+            </div>
+            <div class="col-sm-3">
+                <input asp-for="Race" class="form-control" />
+                <span asp-validation-for="Race" class="text-danger"></span>
+            </div>
+            <div class="col-sm-2">
+                <input asp-for="PetAge" class="form-control" min="0" max="100"/>
+                <span asp-validation-for="PetAge" class="text-danger"></span>
+            </div>
+            <span>años</span>
+        </div>
+    </div>
+    <br />
+    <div class="col-sm-8">
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <a asp-action="Index">Regresar</a>
+            </div>
+            <div class="col-sm-6">
+                <input type="submit" value="Solicitar cita" class="btn btn-primary block" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @*@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}*@
+}
