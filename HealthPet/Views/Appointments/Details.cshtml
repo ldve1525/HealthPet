@@ -4,87 +4,203 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<!-- Trigger the modal with a button -->
 
-<div>
-    <h4>Appointment</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Categorie)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Categorie)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Shift)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Shift)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdCard)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCard)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PetName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PetName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PetType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PetType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PetAge)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PetAge)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Race)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Race)
-        </dd>
-    </dl>
+
+
+<div class="group col-sm-8">
+    <div class="row">
+        <label class="col-sm-6 col-form-label">CITA</label>
+
+    </div>
+    <div class="row">
+        <label class="col-sm-4 cita"><strong>CONFIRMADA</strong></label>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.Categorie)</label>
+        <div class="col-sm-6">
+            <input id="categorie" class="form-control bold" value="@Html.DisplayFor(model => model.Categorie)" disabled />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-form-label"></div>
+
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.Date)</label>
+        <div class="col-sm-6">
+            @switch (Model.Shift)
+            {
+                case 1:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 8:00 AM" disabled />
+                    break;
+                case 2:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 8:30 AM" disabled />
+                    break;
+                case 3:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 9:00 AM" disabled />
+                    break;
+                case 4:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 9:30 AM" disabled />
+                    break;
+                case 5:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 10:00 AM" disabled />
+                    break;
+                case 6:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 10:30 AM" disabled />
+                    break;
+                case 7:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 11:00 AM" disabled />
+                    break;
+                case 8:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 11:30 AM" disabled />
+                    break;
+                case 9:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 12:00 PM" disabled />
+                    break;
+                case 10:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 12:30 PM" disabled />
+                    break;
+                case 11:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 1:00 PM" disabled />
+                    break;
+                case 12:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 1:30 PM" disabled />
+                    break;
+                case 13:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 2:00 PM" disabled />
+                    break;
+                case 14:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 2:30 PM" disabled />
+                    break;
+                case 15:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 3:00 PM" disabled />
+                    break;
+                case 16:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 3:30 PM" disabled />
+                    break;
+                case 17:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 4:00 PM" disabled />
+                    break;
+                case 18:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 4:30 PM" disabled />
+                    break;
+                case 19:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 5:00 PM" disabled />
+                    break;
+                case 20:
+                    <input id="shift" class="form-control bold" value="@Html.DisplayFor(model => model.Date) 5:30 PM" disabled />
+                    break;
+            }
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.FirstName)</label>
+        <div class="col-sm-6">
+            <input class="form-control bold" value="@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)" disabled />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.IdCard)</label>
+        <div class="col-sm-6">
+            <input class="form-control bold" value="@Html.DisplayFor(model => model.IdCard)" disabled />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.Phone)</label>
+        <div class="col-sm-6">
+            <input class="form-control bold" value="@Html.DisplayFor(model => model.Phone)" disabled />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.Email)</label>
+        <div class="col-sm-6">
+            <input asp-for="Email" class="form-control bold" disabled />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.PetName)</label>
+        <div class="col-sm-6">
+            <input class="form-control bold" value="@Html.DisplayFor(model => model.PetName)" disabled />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.PetType)</label>
+        <div class="col-sm-6">
+            <input class="form-control bold" value="@Html.DisplayFor(model => model.PetType)" disabled />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.Race)</label>
+        <div class="col-sm-6">
+            <input class="form-control bold" value="@Html.DisplayFor(model => model.Race)" disabled />
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <label class="col-sm-2 col-form-label">@Html.DisplayNameFor(model => model.PetAge)</label>
+        <div class="col-sm-6">
+            <input class="form-control bold" value="@Html.DisplayFor(model => model.PetAge) años" disabled />
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<br />
+<div class="col-sm-8">
+    <div class="form-group row">
+        <div class="col-sm-6">
+            <a data-toggle="modal" href="#deleteModal">Borrar</a> |
+            <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+            <a asp-action="Index">Regresar</a>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary block" data-toggle="modal" data-target="#DetailsModal">Enviar por email</button>
+        </div>
+    </div>
+</div>
+<a asp-action="DeleteConfirmed" asp-route-id="@Model.Id" id="confirmDelete"></a>
+
+<!-- Modal -->
+<div id="DetailsModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Enviar comprobante</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="content">Desea enviar el comprobante por correo electrónico?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="btnSend" type="button" onclick="sendEmail(@Model.Id)" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Eliminar cita</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="content">Está seguro que desea eliminar la cita?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnSend" type="button" onclick="confirmDelete()" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
 </div>

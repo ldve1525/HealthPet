@@ -139,15 +139,33 @@
                 <a asp-action="Index">Regresar</a>
             </div>
             <div class="col-sm-6">
-                <input type="submit" value="Modificar cita" class="btn btn-primary block" />
+                <button type="button" class="btn btn-primary block" data-toggle="modal" data-target="#editModal">Modificar cita</button>
             </div>
         </div>
     </div>
+    <input type="submit" id="confirmEdit" />
 </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div id="editModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modificar cita</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="content">Desea modificar la cita?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="btnSend" type="button" onclick="confirmEdit()" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

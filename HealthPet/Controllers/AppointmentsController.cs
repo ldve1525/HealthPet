@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HealthPet.Models;
 using Microsoft.Data.SqlClient;
+using HealthPet.Email;
 
 namespace HealthPet.Controllers
 {
@@ -28,7 +29,7 @@ namespace HealthPet.Controllers
         }
 
         // GET: Appointments/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, bool? sent)
         {
             if (id == null)
             {
@@ -136,32 +137,31 @@ namespace HealthPet.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", new { id = appointment.Id });
             }
             return View(appointment);
         }
 
         // GET: Appointments/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var appointment = await _context.Appointments
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (appointment == null)
-            {
-                return NotFound();
-            }
+        //    var appointment = await _context.Appointments
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (appointment == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(appointment);
-        }
+        //    return View(appointment);
+        //}
 
         // POST: Appointments/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var appointment = await _context.Appointments.FindAsync(id);
@@ -173,6 +173,17 @@ namespace HealthPet.Controllers
         private bool AppointmentExists(int id)
         {
             return _context.Appointments.Any(e => e.Id == id);
+        }
+
+        public async Task<IActionResult> Print(int id)
+        {
+            var appointment = await _context.Appointments.FindAsync(id);
+
+            EmailHelper emailHelper = new EmailHelper();
+            bool emailResponse = emailHelper.SendEmail(appointment);
+
+            //return Ok(appointment);
+            return RedirectToAction("Details", new { id = appointment.Id, send = true });
         }
     }
 }

@@ -68,3 +68,32 @@ function myFunction(val) {
     });
 }
 
+function sendEmail(val) {
+    $.ajax({
+        url: '/Appointments/Print/',
+        type: 'get',
+        data: { id: val },
+        success: function (result) {
+            $("#content").html("El correo electrónico ha sido enviado.");
+            $("#btnClose").css("display", "block");
+            $("#btnSend").css("display", "none");
+        },
+        error: function (xhr, status, error) {
+            var err = xhr.responseText;
+            alert(err);
+        }
+    });
+}
+
+function confirmEdit() {
+    var modal = $("#editModal");
+    modal.modal("hide");
+    $("#confirmEdit").click();  //activa el event handler de clic del envío real
+}
+
+function confirmDelete() {
+    alert("confirmDelete");
+    var modal = $("#deleteModal");
+    modal.modal("hide");
+    $("#confirmDelete")[0].click();  //activa el event handler de clic del envío real
+}
