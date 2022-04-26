@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace HealthPet.Models
 {
-    public partial class HealthPetDBContext : DbContext
+    public partial class HealthPetDBContext : IdentityDbContext
     {
         public HealthPetDBContext()
         {
